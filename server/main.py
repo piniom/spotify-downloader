@@ -41,7 +41,6 @@ app = Flask("Spotify-Downloader-Server")
 def track():
     data = request.get_json()
     track_url = data.get('trackUrl')
-    print(data.get('isWatch'))
     if track_url:
         try:
             automate_website_interaction(track_url)
@@ -55,8 +54,13 @@ def watch():
     show_watch_button = True
     return jsonify(show=show_watch_button)
 
-def main():
+def dev_main():
      app.run(host='0.0.0.0', port=3000)
 
+def main():
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=3000)
+
 if __name__ == '__main__':
-    main()
+    # main()
+    dev_main()

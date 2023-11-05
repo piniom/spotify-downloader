@@ -1,0 +1,9 @@
+[Unit]
+Description=Spotify Downoader Server
+
+[Service]
+ExecStart=/usr/bin/python server/main.py
+WorkingDirectory=/home/szymon/dev/spotify-downloader
+
+[Install]
+WantedBy=multi-user.target
